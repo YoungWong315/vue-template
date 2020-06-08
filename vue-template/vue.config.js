@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: '/', // 网址url的基地址
+  publicPath: '/', // 网址url的基地址
   outputDir: process.env.NODE_ENV === 'production' ? './pro' : './dev', // 打包路径
   assetsDir: 'static', // 资源目录
   indexPath: 'index.html',
