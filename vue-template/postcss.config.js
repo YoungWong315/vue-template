@@ -1,6 +1,5 @@
 module.exports = {
   plugins: {
-    autoprefixer: {},
     // vw 适配方案配置
     'postcss-import': {},
     'postcss-url': {},
