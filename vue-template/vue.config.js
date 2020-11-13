@@ -1,19 +1,23 @@
+const isProduct = process.env.NODE_ENV === 'production'
+
 module.exports = {
   publicPath: '/', // 网址url的基地址
-  outputDir: process.env.NODE_ENV === 'production' ? './prod' : './dev', // 打包路径
+  outputDir: isProduct ? './prod' : './dev', // 打包路径
   assetsDir: 'static', // 资源目录
   indexPath: 'index.html',
   filenameHashing: true, // 控制缓存
   productionSourceMap: false, // 是否为生产环境构建生成 source map
   css: {
     //modules: true, // css module, css module会导致vant组件样式加载失败
-    extract: true, // 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用<style>方式内联至html文件中
-    sourceMap: false, // 是否在构建样式地图，false将提高构建速度
+    // 这个选项会影响热加载，开发环境关闭
+    extract: isProduct, // 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用<style>方式内联至html文件中
+    sourceMap: isProduct, // 是否在构建样式地图，false将提高构建速度
   },
   devServer: {
     // devServer
     open: true,
     https: false,
+    hot: true,
     // 开启代理案例，选用
     /* proxy: {
       '/apiys': {
